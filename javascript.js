@@ -1,18 +1,8 @@
-/*
+let computerScore = 0;
+let humanScore = 0;
 
-we need:
 
-getComputerChoice: done
-
-getHumanChoice: done
-
-humanScore and computerScore: done
-
-playRound: done
-
-playGame: 
-
-*/
+playGame(5);
 
 
 function getComputerChoice(){
@@ -32,9 +22,6 @@ function getHumanChoice(){
         return getHumanChoice();
     }
 }
-
-let computerScore = 0;
-let humanScore = 0;
 
 function compWinText(humanChoice, computerChoice){
     alert(`You chose ${humanChoice}, I chose ${computerChoice}, I WIN!!! >:D`);
