@@ -8,7 +8,7 @@ getHumanChoice: done
 
 humanScore and computerScore: done
 
-playRound: 
+playRound: done
 
 playGame: 
 
@@ -23,9 +23,10 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let choice = prompt("Please enter your choice - rock, paper or scissors:").toLowerCase();
+    let choice = prompt("Please enter your choice - rock, paper or scissors:");
+    if (choice === null) return "rock";
+    choice = choice.toLowerCase();
     if (choice === "rock" || choice === "paper" || choice === "scissors") return choice;
-    else if (choice === null) return "rock";
     else {
         alert("you have to choose EXACTLY one of the three,\ntry again...");
         return getHumanChoice();
@@ -36,15 +37,15 @@ let computerScore = 0;
 let humanScore = 0;
 
 function compWinText(humanChoice, computerChoice){
-    console.log(`You chose ${humanChoice}, I chose ${computerChoice}, I WIN!!! >:D`);
+    alert(`You chose ${humanChoice}, I chose ${computerChoice}, I WIN!!! >:D`);
 }
 
-function compLoseText(humanChoice, ComputerChoice){
-    console.log(`You chose ${humanChoice}, I chose ${computerChoice}.. I lose :/  :(`);
+function compLoseText(humanChoice, computerChoice){
+    alert(`You chose ${humanChoice}, I chose ${computerChoice}.. I lose :/  :(`);
 }
 
 function drawText(humanChoice){
-    console.log(`You chose ${humanChoice}, so did I, it's a draw :|`);
+    alert(`You chose ${humanChoice}, so did I, it's a draw :|`);
 }
 
 function playRound(){
@@ -60,7 +61,7 @@ function playRound(){
          (humanChoice === "paper" && computerChoice === "rock" )
     ){
         compLoseText(humanChoice, computerChoice);
-        computerScore++;
+        humanScore++;
         return;
     }
     if ( (humanChoice === "rock" && computerChoice === "paper") ||
@@ -71,4 +72,19 @@ function playRound(){
         computerScore++;
         return;
     }
+}
+
+function playGame(n){
+    humanScore = 0;
+    computerScore = 0;
+    console.log(`We will play ${n} rounds,`)
+    for (let i = 1; i <= n; i++){
+        alert(`Time for round ${i}/${n}:`)
+        playRound();
+        alert(`Your score: ${humanScore} \nMy score: ${computerScore}`);
+    }
+    
+    if(humanScore > computerScore) alert(`You won the game >:(`);
+    else if (humanScore < computerScore) alert(`I WON THE GAME!! :D loser`);
+    else alert(`It's a draw. You're lucky I spared you`);
 }
