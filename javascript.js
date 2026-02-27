@@ -2,7 +2,7 @@ let computerScore = 0;
 let humanScore = 0;
 
 
-playGame(5);
+// playGame(5);
 
 
 function getComputerChoice(){
@@ -35,9 +35,9 @@ function drawText(humanChoice){
     alert(`You chose ${humanChoice}, so did I, it's a draw :|`);
 }
 
-function playRound(){
+function playRound(event){
     let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
+    let humanChoice = event.target.id;
 
     if (humanChoice === computerChoice){
         drawText(humanChoice);
@@ -61,17 +61,21 @@ function playRound(){
     }
 }
 
-function playGame(n){
-    humanScore = 0;
-    computerScore = 0;
-    console.log(`We will play ${n} rounds,`)
-    for (let i = 1; i <= n; i++){
-        alert(`Time for round ${i}/${n}:`)
-        playRound();
-        alert(`Your score: ${humanScore} \nMy score: ${computerScore}`);
-    }
+// function playGame(n){
+//     humanScore = 0;
+//     computerScore = 0;
+//     console.log(`We will play ${n} rounds,`)
+//     for (let i = 1; i <= n; i++){
+//         alert(`Time for round ${i}/${n}:`)
+//         playRound();
+//         alert(`Your score: ${humanScore} \nMy score: ${computerScore}`);
+//     }
     
-    if(humanScore > computerScore) alert(`You won the game >:(`);
-    else if (humanScore < computerScore) alert(`I WON THE GAME!! :D loser`);
-    else alert(`It's a draw. You're lucky I spared you`);
-}
+//     if(humanScore > computerScore) alert(`You won the game >:(`);
+//     else if (humanScore < computerScore) alert(`I WON THE GAME!! :D loser`);
+//     else alert(`It's a draw. You're lucky I spared you`);
+// }
+
+const choiceButtons = document.querySelector("#choiceButtons");
+
+choiceButtons.addEventListener("click", playRound);
