@@ -24,15 +24,18 @@ function getHumanChoice(){
 }
 
 function compWinText(humanChoice, computerChoice){
-    alert(`You chose ${humanChoice}, I chose ${computerChoice}, I WIN!!! >:D`);
+    const resultPara = document.querySelector("#resultsDisplay p");
+    resultPara.textContent = `You chose ${humanChoice}, I chose ${computerChoice}, I WIN!!! >:D`;
 }
 
 function compLoseText(humanChoice, computerChoice){
-    alert(`You chose ${humanChoice}, I chose ${computerChoice}.. I lose :/  :(`);
+    const resultPara = document.querySelector("#resultsDisplay p");
+    resultPara.textContent = `You chose ${humanChoice}, I chose ${computerChoice}.. I lose :/  :(`;
 }
 
 function drawText(humanChoice){
-    alert(`You chose ${humanChoice}, so did I, it's a draw :|`);
+    const resultPara = document.querySelector("#resultsDisplay p");
+    resultPara.textContent = `You chose ${humanChoice}, so did I, it's a draw :|`;
 }
 
 function playRound(event){
