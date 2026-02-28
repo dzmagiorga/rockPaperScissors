@@ -1,5 +1,6 @@
 let computerScore = 0;
 let humanScore = 0;
+let roundNumber = 0;
 const choiceButtons = document.querySelector("#choiceButtons");
 
 // playGame(5);
@@ -67,21 +68,34 @@ function playRound(event){
         computerScore++;
     }
 
-    displayGame(`Your score: ${humanScore} \nMy score: ${computerScore}`);
+    roundNumber++;
 
-    if(humanScore === 5 && humanScore > computerScore)
-        displayGame(`You won the game >:(`);
-    if (computerScore === 5 && humanScore < computerScore)
-        displayGame(`I WON THE GAME!! :D loser`);
-    if (computerScore === 5 && humanScore === computerScore)
-        displayGame(`It's a draw. You're lucky I spared you`);
+    if (roundNumber < 5){
+        displayGame(`round ${roundNumber} of 5 -- Your score: ${humanScore} \nMy score: ${computerScore}`);
+    } else {
+        if(humanScore > computerScore){
+            displayGame(`You won the game >:(`);
+            humanScore = computerScore = roundNumber = 0;
+        } else
+        if (humanScore < computerScore){
+            displayGame(`I WON THE GAME!! :D loser`);
+            humanScore = computerScore = roundNumber = 0;
+        } else
+        if (humanScore === computerScore){
+            displayGame(`It's a draw. You're lucky I spared you`);
+            humanScore = computerScore = roundNumber = 0;
+        }
+    }
 }
 
-function playGame(n){
-    humanScore = 0;
-    computerScore = 0;
+choiceButtons.addEventListener("click", playRound);
 
-    choiceButtons.addEventListener("click", playRound);
-}
+// function playGame(){
+//     humanScore = 0;
+//     computerScore = 0;
+//     roundNumber = 0;
 
-playGame(5);
+//     choiceButtons.addEventListener("click", playRound);
+// }
+
+// playGame();
